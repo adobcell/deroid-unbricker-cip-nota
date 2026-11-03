@@ -3,15 +3,15 @@ plugins {
 }
 
 android {
-    namespace 'com.deroid.unbricker.nota'
+    namespace 'com.scrapengine.app'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.deroid.unbricker.nota"
+        applicationId "com.scrapengine.app"
         minSdk 24
         targetSdk 34
-        versionCode 9
-        versionName "9.0.0"
+        versionCode 1
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

@@ -1,5 +1,5 @@
 <resources>
-    <style name="Theme.DeroidUnbrickerCipNota" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.ScrapEngine" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">#0284C7</item>
         <item name="colorOnPrimary">#FFFFFF</item>
         <item name="android:windowBackground">#000000</item>
