@@ -1,4 +1,4 @@
-# Deroid Unbricker Nota Microscope V3.10.7 — Text PRO
+# Jejak Teknisi Microscope V3.10.7 — Text PRO
 
 Perubahan dari V3.10.6-fixed:
 - Text PRO saat menambah teks: ukuran fleksibel.

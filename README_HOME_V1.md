@@ -1,4 +1,4 @@
-# Deroid Unbricker Nota — Home V1
+# Jejak Teknisi — Home V1
 
 Halaman utama kini menjadi menu awal aplikasi dengan dua pilihan utama:
 

@@ -1,4 +1,4 @@
-# Deroid Unbricker Nota Microscope V3.9.6
+# Jejak Teknisi Microscope V3.9.6
 
 ## Editor PRO – Multi-touch Transform Fix
 - Two-finger rotate + resize now takes priority over single-handle transforms.

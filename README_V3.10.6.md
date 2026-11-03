@@ -1,4 +1,4 @@
-# Deroid Unbricker Nota Microscope V3.10.6 — Editor Layer PRO
+# Jejak Teknisi Microscope V3.10.6 — Editor Layer PRO
 
 Lanjutan dari V3.10.5.
 

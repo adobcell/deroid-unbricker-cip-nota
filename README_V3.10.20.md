@@ -1,4 +1,4 @@
-# Deroid Unbricker Nota Microscope V3.10.20
+# Jejak Teknisi Microscope V3.10.20
 
 ## Database eMMC — kamera + pencarian + data teknisi
 

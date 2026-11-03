@@ -1,4 +1,4 @@
-# Deroid Unbricker Nota Microscope V3.10.16
+# Jejak Teknisi Microscope V3.10.16
 
 ## Select/Pilih PRO refinement
 - Select tetap menggunakan empat handle sudut yang terlihat.

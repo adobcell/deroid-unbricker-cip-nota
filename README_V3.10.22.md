@@ -1,4 +1,4 @@
-# Deroid Unbricker Nota Microscope V3.10.22
+# Jejak Teknisi Microscope V3.10.22
 
 Perubahan Database:
 - Kamera ditutup saat Database dibuka karena panel pencarian menutupi preview.

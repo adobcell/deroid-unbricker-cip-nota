@@ -1,4 +1,4 @@
-# Deroid Unbricker Nota Microscope V3.10.21
+# Jejak Teknisi Microscope V3.10.21
 
 Perbaikan Database eMMC:
 - Kamera tetap tampil saat Database dibuka.
