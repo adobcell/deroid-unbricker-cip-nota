@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.jejakcam.app"
+    namespace = "com.deroid.unbrickernota"
     compileSdk = 35
 
     compileOptions {
@@ -16,7 +16,7 @@ android {
         jvmTarget = "17"
     }
 
-    defaultConfig { applicationId = "com.jejakcam.app"; minSdk = 24; targetSdk = 35; versionCode = 64; versionName = "1.65.0" }
+    defaultConfig { applicationId = "com.deroid.unbrickernota"; minSdk = 24; targetSdk = 35; versionCode = 64; versionName = "1.65.0" }
 }
 
 dependencies {
