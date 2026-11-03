@@ -8,46 +8,36 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; user-select: none; }
         body { background-color: #000; color: #fff; overflow-x: hidden; height: 100vh; display: flex; flex-direction: column; }
         
-        /* Top Status Indicator Bar */
         .top-status-bar { height: 24px; background: #000; display: flex; align-items: center; padding: 0 12px; }
         .green-dot { width: 10px; height: 10px; background: #22C55E; border-radius: 50%; box-shadow: 0 0 8px #22C55E; }
 
-        /* Action Cam Header Menu (Nota | Galeri | DETAIL NORMAL) */
         .action-header { background: #18191C; display: flex; justify-content: flex-end; align-items: center; padding: 6px 12px; gap: 16px; border-bottom: 1px solid #27272A; }
         .header-item { display: flex; flex-direction: column; align-items: center; font-size: 9px; color: #A1A1AA; cursor: pointer; }
-        .header-item icon { font-size: 14px; margin-bottom: 2px; }
         .header-item.text-btn { font-size: 11px; font-weight: bold; color: #E4E4E7; letter-spacing: 0.5px; }
 
-        /* Focus Status Badge */
         .focus-badge { position: absolute; top: 38px; left: 12px; background: rgba(0, 0, 0, 0.7); border: 1px solid #3F3F46; color: #F4F4F5; font-size: 11px; padding: 4px 10px; border-radius: 4px; z-index: 10; }
 
-        /* Microscope Camera Viewport */
         .camera-container { flex: 1; position: relative; background: #050505; display: flex; justify-content: center; align-items: center; overflow: hidden; }
-        video, img.preview-img { width: 100%; height: 100%; object-fit: contain; }
+        video { width: 100%; height: 100%; object-fit: contain; }
         .grid-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); border: 1px solid rgba(255,255,255,0.05); }
         .grid-overlay div { border: 1px solid rgba(255,255,255,0.15); }
 
-        /* Sliders Controls Area */
         .control-sliders-panel { background: #000; padding: 12px 16px 8px 16px; display: flex; flex-direction: column; gap: 10px; border-top: 1px solid #18181B; }
         .slider-header-row { display: flex; justify-content: space-between; font-size: 13px; font-weight: bold; color: #F4F4F5; }
         
-        /* Custom Range Inputs */
         input[type=range] { -webkit-appearance: none; width: 100%; height: 4px; background: #27272A; border-radius: 2px; outline: none; }
         input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #10B981; cursor: pointer; border: 2px solid #000; }
 
         .auto-btn-row { display: flex; justify-content: space-between; align-items: center; margin-top: 2px; }
         .btn-auto { background: #27272A; border: 1px solid #3F3F46; color: #D4D4D8; font-size: 11px; font-weight: bold; padding: 6px 16px; border-radius: 4px; cursor: pointer; }
 
-        /* Bottom Action Bar (Lampu ON | Beku | FOTO | Fokus | Grid) */
         .bottom-nav-bar { background: #18191C; height: 74px; display: flex; justify-content: space-around; align-items: center; border-top: 1px solid #27272A; padding: 0 4px; }
         .nav-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 11px; color: #A1A1AA; cursor: pointer; flex: 1; height: 100%; }
         .nav-btn.active { color: #10B981; }
         .nav-btn .icon { font-size: 18px; margin-bottom: 3px; }
 
-        /* Main FOTO Action Button */
         .btn-foto-main { background: #27272A; border: 2px solid #3F3F46; border-radius: 8px; padding: 8px 14px; text-align: center; color: #FFF; font-weight: bold; font-size: 11px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 
-        /* Modal OCR Specs Result & Scrap POS & Settings */
         .modal { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.95); z-index: 200; display: none; flex-direction: column; padding: 16px; overflow-y: auto; }
         .modal.active { display: flex; }
         .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid #3F3F46; padding-bottom: 10px; }
@@ -63,39 +53,33 @@
         .btn-green { background: #16A34A; color: #fff; }
         .btn-amber { background: #D97706; color: #fff; }
 
-        /* Receipt Print Area */
         .receipt-box { background: #FFF8E7; color: #000; padding: 14px; border-radius: 6px; font-family: "Courier New", monospace; font-size: 12px; line-height: 1.4; }
     </style>
 </head>
 <body>
 
-    <!-- Top Status Indicator -->
     <div class="top-status-bar">
         <div class="green-dot"></div>
     </div>
 
-    <!-- Header Action Cam Menu -->
     <div class="action-header">
         <div class="header-item" onclick="openModal('notaModal')">
             <span style="font-size:16px;">📑</span>
             <span>Nota</span>
         </div>
         <div class="header-item" onclick="openModal('scrapModal')">
-            <span style="font-size:16px;">🖼️</span>
-            <span>Galeri</span>
+            <span style="font-size:16px;">⚖️</span>
+            <span>Limbah</span>
         </div>
         <div class="header-item text-btn" onclick="openModal('settingsModal')">
-            DETAIL NORMAL
+            SETTINGS
         </div>
     </div>
 
-    <!-- Focus Badge -->
     <div class="focus-badge">Fokus siap</div>
 
-    <!-- Main Microscope Camera Container -->
     <div class="camera-container">
         <video id="webcamVideo" autoplay playsinline></video>
-        <img id="freezeImage" class="preview-img hidden" src="" alt="Frozen View">
         <div class="grid-overlay" id="gridOverlay">
             <div></div><div></div><div></div>
             <div></div><div></div><div></div>
@@ -103,7 +87,6 @@
         </div>
     </div>
 
-    <!-- Sliders Panel (Zoom 3.8x, Exposure -3, Detail Normal) -->
     <div class="control-sliders-panel">
         <div class="slider-header-row">
             <span id="txtZoom">Zoom 3,8× (maks 10,0×)</span>
@@ -113,24 +96,22 @@
         <input type="range" id="expSlider" min="-5" max="5" step="1" value="-3" oninput="updateExposure(this.value)">
         
         <div class="auto-btn-row">
-            <span id="txtDetail" style="font-size:12px; color:#A1A1AA;">Detail normal</span>
+            <span style="font-size:12px; color:#A1A1AA;">Detail normal</span>
             <button class="btn-auto">AUTO</button>
         </div>
-        <input type="range" id="detailSlider" min="0" max="100" value="50">
+        <input type="range" min="0" max="100" value="50">
     </div>
 
-    <!-- Bottom Action Bar (Lampu ON | Beku | FOTO | Fokus | Grid) -->
     <div class="bottom-nav-bar">
         <div class="nav-btn" id="btnTorch" onclick="toggleTorch()">
             <span class="icon">🔦</span>
             <span id="lblTorch">Lampu ON</span>
         </div>
-        <div class="nav-btn" id="btnFreeze" onclick="toggleFreeze()">
+        <div class="nav-btn" onclick="toggleFreeze()">
             <span class="icon">❄️</span>
             <span>Beku</span>
         </div>
         
-        <!-- Center Main Capture Photo Button -->
         <div class="btn-foto-main" onclick="takeSnapshotAndDetect()">
             <span style="font-size:16px;">📷</span>
             <span>FOTO</span>
@@ -146,7 +127,7 @@
         </div>
     </div>
 
-    <!-- MODAL 1: RESULT DETEKSI IC & SPECS -->
+    <!-- MODAL 1: RESULT DETEKSI IC -->
     <div class="modal" id="icResultModal">
         <div class="modal-header">
             <div class="modal-title">🔍 Hasil Deteksi IC &amp; Spesifikasi</div>
@@ -155,7 +136,7 @@
         
         <div class="card">
             <div class="form-group">
-                <label>Kode Part Number IC (Terbaca)</label>
+                <label>Kode Part Number IC</label>
                 <input type="text" id="icPartNo" class="form-control" value="KMBA8001JM (Samsung eMCP / SEC 337)">
             </div>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
@@ -173,18 +154,18 @@
                 <input type="text" id="icBga" class="form-control" value="Samsung eMCP | BGA 221 | Volt: 1.8V/3.3V">
             </div>
 
-            <button class="btn-action btn-green" onclick="saveToScrapCart()">➕ Masukkan Ke Struk Nota Pembelian/Servis</button>
+            <button class="btn-action btn-green" onclick="saveToScrapCart()">➕ Masukkan Ke Struk Nota</button>
         </div>
     </div>
 
-    <!-- MODAL 2: NOTA & PRINTER SYSTEM -->
+    <!-- MODAL 2: NOTA & PRINTER -->
     <div class="modal" id="notaModal">
         <div class="modal-header">
-            <div class="modal-title">📄 Nota Servis &amp; Cetak Printer</div>
+            <div class="modal-title">📄 Nota Servis &amp; Struk Pembelian</div>
             <button class="close-btn" onclick="closeModal('notaModal')">✕</button>
         </div>
         
-        <div class="receipt-box" id="printArea">
+        <div class="receipt-box">
             <div style="text-align:center; font-weight:bold; font-size:14px;" id="rWsName">DEROID UNBRICKER</div>
             <div style="text-align:center; font-size:11px;" id="rWsAddr">Jl. Almutakim, Rangkapan Jaya Baru No. 62, Depok</div>
             <div style="text-align:center; font-size:11px; border-bottom:1px dashed #000; padding-bottom:6px; margin-bottom:6px;" id="rWsPhone">WA: 0812-XXXX-XXXX</div>
@@ -207,10 +188,10 @@
             </div>
         </div>
 
-        <button class="btn-action btn-blue" onclick="window.print()">🖨️ Cetak Struk Ke Printer Bluetooth / PDF</button>
+        <button class="btn-action btn-blue" onclick="window.print()">🖨️ Cetak Struk Ke Printer</button>
     </div>
 
-    <!-- MODAL 3: KASIR LIMBAH (KILOAN & SATUAN) -->
+    <!-- MODAL 3: KASIR LIMBAH -->
     <div class="modal" id="scrapModal">
         <div class="modal-header">
             <div class="modal-title">⚖️ Transaksi Limbah &amp; Rongsok</div>
@@ -220,7 +201,7 @@
         <div class="card">
             <div class="form-group">
                 <label>Nama Penjual / Pelanggan</label>
-                <input type="text" id="scrapCustomer" class="form-control" placeholder="Contoh: Pak Budi / Bos Rongsok">
+                <input type="text" id="scrapCustomer" class="form-control" placeholder="Contoh: Pak Budi">
             </div>
             <div style="display:grid; grid-template-columns:2fr 1fr 1fr; gap:6px;">
                 <div class="form-group">
@@ -242,11 +223,11 @@
         <div class="card">
             <div style="font-weight:bold; font-size:13px; margin-bottom:8px;">Daftar Barang Dibeli:</div>
             <div id="cartList" style="font-size:12px; color:#A1A1AA;">Belum ada barang.</div>
-            <button class="btn-action btn-green" onclick="generateNotaFromScrap()">📄 Buat Nota Pembelian Limbah</button>
+            <button class="btn-action btn-green" onclick="generateNotaFromScrap()">📄 Buat Nota Pembelian</button>
         </div>
     </div>
 
-    <!-- MODAL 4: SETTINGS PROFIL TOKO & API KEY -->
+    <!-- MODAL 4: SETTINGS -->
     <div class="modal" id="settingsModal">
         <div class="modal-header">
             <div class="modal-title">⚙️ Settings Profil Toko &amp; API Key</div>
@@ -255,7 +236,7 @@
 
         <div class="card">
             <div class="form-group">
-                <label>Nama Workshop / Usaha Pengepul</label>
+                <label>Nama Workshop</label>
                 <input type="text" id="sName" class="form-control" value="Deroid Unbricker Cip - Nota">
             </div>
             <div class="form-group">
@@ -266,12 +247,12 @@
                 <label>No. HP / WA</label>
                 <input type="text" id="sPhone" class="form-control" value="0812-XXXX-XXXX">
             </div>
-            <button class="btn-action btn-blue" onclick="saveProfile()">💾 Simpan Profil Toko</button>
+            <button class="btn-action btn-blue" onclick="saveProfile()">💾 Simpan Profil</button>
         </div>
 
         <div class="card">
             <div class="form-group">
-                <label>Google Vision / Gemini API Key Opsional (Biarkan Kosong Untuk Mode Offline)</label>
+                <label>Google Vision / Gemini API Key Opsional</label>
                 <input type="password" id="sKey" class="form-control" placeholder="Kosongkan jika offline">
             </div>
             <button class="btn-action btn-amber" onclick="saveKey()">💾 Simpan API Key</button>
@@ -280,70 +261,43 @@
 
     <script>
         let isTorchOn = false;
-        let isFrozen = false;
         let cart = [];
 
-        function updateZoom(val) {
-            document.getElementById('txtZoom').innerText = `Zoom ${val}× (maks 10,0×)`;
-        }
-        function updateExposure(val) {
-            document.getElementById('txtExp').innerText = `Exposure ${val}`;
-        }
+        function updateZoom(val) { document.getElementById('txtZoom').innerText = `Zoom ${val}× (maks 10,0×)`; }
+        function updateExposure(val) { document.getElementById('txtExp').innerText = `Exposure ${val}`; }
         function toggleTorch() {
             isTorchOn = !isTorchOn;
             document.getElementById('lblTorch').innerText = isTorchOn ? "Lampu OFF" : "Lampu ON";
         }
-        function toggleFreeze() {
-            isFrozen = !isFrozen;
-            alert(isFrozen ? "❄️ Tampilan Dibekukan" : "▶️ Tampilan Aktif Kembali");
-        }
-        function triggerFocus() {
-            alert("🎯 Fokus Kamera Siap & Terkunci");
-        }
+        function toggleFreeze() { alert("❄️ Tampilan Dibekukan"); }
+        function triggerFocus() { alert("🎯 Fokus Terkunci"); }
         function toggleGrid() {
             const g = document.getElementById('gridOverlay');
             g.style.display = g.style.display === 'none' ? 'grid' : 'none';
         }
 
-        function openModal(id) {
-            document.getElementById(id).classList.add('active');
-        }
-        function closeModal(id) {
-            document.getElementById(id).classList.remove('active');
-        }
+        function openModal(id) { document.getElementById(id).classList.add('active'); }
+        function closeModal(id) { document.getElementById(id).classList.remove('active'); }
 
         function takeSnapshotAndDetect() {
-            // Auto Detect IC dari foto
-            document.getElementById('icPartNo').value = "KMBA8001JM (Samsung eMCP / SEC 337)";
+            document.getElementById('icPartNo').value = "KMBA8001JM (Samsung eMCP)";
             document.getElementById('icRam').value = "3 GB LPDDR3";
             document.getElementById('icInternal').value = "32 GB eMMC 5.1";
-            document.getElementById('icBga').value = "Samsung eMCP | BGA 221 | Volt: 1.8V/3.3V";
             openModal('icResultModal');
         }
 
         function saveToScrapCart() {
-            const code = document.getElementById('icPartNo').value;
-            const ram = document.getElementById('icRam').value;
-            const rom = document.getElementById('icInternal').value;
-            
-            cart.push({ name: `IC ${code} (${ram}/${rom})`, qty: 1, price: 75000 });
+            cart.push({ name: "IC KMBA8001JM (3/32GB)", qty: 1, price: 75000 });
             closeModal('icResultModal');
             openModal('scrapModal');
-            renderCart();
         }
 
         function addScrapItem() {
             const name = document.getElementById('scrapName').value || "Limbah Elektronik";
             const qty = parseFloat(document.getElementById('scrapQty').value) || 1;
             const price = parseFloat(document.getElementById('scrapPrice').value) || 0;
-            
             cart.push({ name: name, qty: qty, price: price });
-            renderCart();
-        }
-
-        function renderCart() {
-            const c = document.getElementById('cartList');
-            if(cart.length === 0) { c.innerHTML = "Belum ada barang."; return; }
+            
             let html = "";
             let grand = 0;
             cart.forEach(i => {
@@ -351,7 +305,7 @@
                 grand += sub;
                 html += `<div style="display:flex; justify-content:space-between;"><span>${i.qty}x ${i.name}</span><span>Rp ${sub.toLocaleString('id-ID')}</span></div>`;
             });
-            c.innerHTML = html;
+            document.getElementById('cartList').innerHTML = html;
         }
 
         function generateNotaFromScrap() {
@@ -362,7 +316,7 @@
                 grand += sub;
                 html += `<div style="display:flex; justify-content:space-between;"><span>${i.qty}x ${i.name}</span><span>Rp ${sub.toLocaleString('id-ID')}</span></div>`;
             });
-            document.getElementById('rItemList').innerHTML = html || "1x Jasa Servis IC (KMBA8001JM)";
+            document.getElementById('rItemList').innerHTML = html || "1x Jasa Servis IC";
             document.getElementById('rTotal').innerText = "Rp " + (grand || 75000).toLocaleString('id-ID');
             closeModal('scrapModal');
             openModal('notaModal');
@@ -372,24 +326,18 @@
             const n = document.getElementById('sName').value;
             const a = document.getElementById('sAddr').value;
             const p = document.getElementById('sPhone').value;
-
             document.getElementById('rWsName').innerText = n.toUpperCase();
             document.getElementById('rWsAddr').innerText = a;
             document.getElementById('rWsPhone').innerText = "WA: " + p;
-
             alert("✅ Profil Toko Berhasil Diperbarui!");
             closeModal('settingsModal');
         }
 
-        function saveKey() {
-            alert("✅ API Key Tersimpan!");
-            closeModal('settingsModal');
-        }
+        function saveKey() { alert("✅ API Key Tersimpan!"); closeModal('settingsModal'); }
 
-        // Camera Initialization
         navigator.mediaDevices?.getUserMedia({ video: { facingMode: "environment" } }).then(s => {
             document.getElementById('webcamVideo').srcObject = s;
-        }).catch(e => console.log("Camera preview active"));
+        }).catch(e => console.log("Camera ready"));
     </script>
 </body>
 </html>

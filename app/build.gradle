@@ -10,8 +10,8 @@ android {
         applicationId "com.deroid.unbricker.nota"
         minSdk 24
         targetSdk 34
-        versionCode 4
-        versionName "4.0.0"
+        versionCode 5
+        versionName "5.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -32,5 +32,4 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.11.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'com.google.android.gms:play-services-mlkit-text-recognition:19.0.0'
 }
